@@ -1,0 +1,65 @@
+<div class="container" style="margin-top: 70px;">
+  <div class="alert alert-danger" role="alert" *ngIf="error!=''">{{error}}</div>
+  <div class="alert alert-success" role="alert" *ngIf="message">{{message}}</div>
+  <div class="container">
+    <form>
+      <div class="form-group">
+        <h3>CR ID: {{this.cr1.id}}</h3><br>
+        <h5>
+          Examen:{{this.cr1.examen.id}}/{{this.cr1.examen.date}}/{{this.cr1.examen.medecinRadiologue}}/{{this.cr1.examen.manipulateur}}/{{this.cr1.examen.medecinPrescripteur}}
+        </h5>
+        <h5>Patient: {{this.cr1.examen.patient | json}}</h5>
+        <h5>Protocole: {{this.cr1.examen.protocole | json}}</h5><br>
+      </div>
+
+
+      <div class="form-group">
+        <label for="titre">Titre</label>
+        <input type="titre" class="form-control" [(ngModel)]="cr1.titre" id="titre" name="titre"
+          aria-describedby="titre" value={{this.cr1.titre}}>
+      </div>
+
+      <div class="form-group">
+        <label for="corp">Corp</label>
+        <input type="corp" class="form-control" [(ngModel)]="cr1.corp" id="corp" name="corp" aria-describedby="corp"
+          value={{this.cr1.corp}}>
+      </div>
+
+
+      <div class="form-group">
+        <label for="MedecinLogin">Responsable du CR (Radiologue)</label>
+        <input type="MedecinLogin" class="form-control" [(ngModel)]="cr1.medecinLogin" id="MedecinLogin"
+          name="MedecinLogin" aria-describedby="MedecinLogin" value={{this.cr1.medecinLogin}}>
+      </div>
+
+      <div class="form-group">
+        <label for="signature">Signature</label>
+        <input type="signature" class="form-control" [(ngModel)]="cr1.signature" id="signature" name="signature"
+          aria-describedby="signature" value={{this.cr1.signature}}>
+      </div>
+
+      <div class="form-group">
+        <label for="secretaireLogin">Secretaire</label>
+        <input type="secretaireLogin" class="form-control" [(ngModel)]="cr1.secretaireLogin" id="secretaireLogin" name="secretaireLogin"
+          aria-describedby="secretaireLogin" value={{this.cr1.secretaireLogin}}>
+      </div>
+
+      <div class="form-group">
+        <label for="sex">Etat</label>
+        <select class="form-control" [(ngModel)]="this.cr1.etat" id="etat" type="text" name="etat">
+          <option>NULL</option>
+          <option>WRITTEN</option>
+          <option>VALIDATED</option>
+        </select>
+      </div>
+
+   
+
+
+      <button class="btn btn-primary" (click)="editCR(this.cr1)">Submit</button>
+
+
+    </form>
+
+  </div>
+</div>

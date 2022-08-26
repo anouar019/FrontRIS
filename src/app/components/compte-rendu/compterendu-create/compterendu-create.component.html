@@ -1,0 +1,85 @@
+<div class="alert alert-danger" role="alert" *ngIf="error!=''">{{error}}</div>
+<div class="container" style="margin-top: 70px;">
+  <div class="alert alert-success" role="alert" *ngIf="message">{{message}}</div>
+  <div class="container" style="margin-top: 70px;">
+
+    <div class="row">
+
+      <div class="col-sm-8 offset-sm-2">
+
+        <div>
+          <form>
+            <div class="form-group">
+
+
+              <label for="Examen">Examen</label>
+              <select class="form-select" aria-label="examen" [(ngModel)]="selectedExam" name="selectedExam"
+                id="selectedExam">
+                <option *ngFor="let p of this.examensList" [ngValue]="p">{{p | json}}</option>
+              </select>
+
+
+              <br>
+
+
+
+            
+
+
+              <label for="titre">Titre</label>
+              <input type="text" [(ngModel)]="CR.titre" name="titre" class="form-control"
+                id="titre" aria-describedby="titreHelp" placeholder="Enter the title">
+
+                <br>
+
+              <label for="corp">Corp</label>
+              <input type="text" [(ngModel)]="CR.corp" name="corp"
+                class="form-control" id="corp" aria-describedby="corpHelp"
+                placeholder="Enter the text">
+
+
+                <br>
+
+              <label for="secretaireLogin">Secretaire</label>
+              <input type="text" [(ngModel)]="CR.secretaireLogin" name="secretaireLogin" class="form-control"
+                id="secretaireLogin" aria-describedby="secretaireLoginHelp"
+                placeholder="Enter the name of the secretaire">
+
+
+                <br>
+
+              <label for="medecinLogin">Radiologue</label>
+              <input type="medecinLogin" [(ngModel)]="CR.medecinLogin" name="medecinLogin" class="form-control" id="medecinLogin"
+                aria-describedby="medecinLoginhelp" >
+
+
+                <br>
+
+              <label for="signature">Signature</label>
+              <input type="signature" [(ngModel)]="CR.signature" name="signature" class="form-control" id="signature"
+                aria-describedby="signaturehelp" >
+
+
+                <br>
+
+                
+
+
+                  <div class="form-group">
+                    <label for="etat">Etat</label>
+                    <select class="form-control" [(ngModel)]="CR.etat" id="etat" type="text" name="etat">
+                      <option>NULL</option>
+                      <option>WRITTEN</option>
+                      <option>VALIDATED</option>
+                    </select>
+                  </div>
+
+
+            </div>
+
+            <button class="btn btn-primary" (click)="createCR()">Submit</button>
+
+          </form>
+        </div>
+      </div>
+    </div>

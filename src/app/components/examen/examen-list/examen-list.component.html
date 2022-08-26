@@ -1,0 +1,61 @@
+<div class="alert alert-danger" role="alert" *ngIf="error!=''">Anomalie lors de la suppression: Verifier que l'examen n'est pas déja validé (presence de CR)
+</div>
+<div class="container" style="margin-top: 70px;">
+  <div class="container">
+    <div class="card-body">
+      <form [formGroup]="searchFormGroup" (ngSubmit)="handleSearchExamen()">
+
+        <div class="input-group">
+          <label class="input-group-text">
+            keyword:
+          </label>
+          <input type="text" class="form-control" formControlName="keyword">
+          <button class="btn btn-secondary">
+            <i class="bi bi-search"></i>
+          </button>
+        </div>
+      </form>
+
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Patient</th>
+          <th>Protocole</th>
+          <th>Details</th>
+          <th *ngIf="this.keycloak.isUserInRole('Secretaire')">Edit</th>
+          <th *ngIf="this.keycloak.isUserInRole('Secretaire')">Del</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let p of myList">
+          <td>{{p.date}}</td>
+          <td>{{p.patient.lastName}}-{{p.patient.firstName}} ({{p.patient.birth}})</td>
+          <td>{{p.protocole.technique}}-{{p.protocole.membre}}-{{p.protocole.type}}</td>
+          <td>
+
+            <a>
+              <button (click)="getExamen(p)" class="btn btn-secondary">
+                <i class="bi bi-binoculars"></i>
+              </button>
+            </a>
+          </td>
+
+          <td>
+            <a>
+              <button *ngIf="this.keycloak.isUserInRole('Secretaire')" (click)="setExamen(p)" class="btn btn-secondary">
+                <i class="bi bi-pencil"></i>
+              </button>
+            </a>
+          </td>
+          <td>
+            <button *ngIf="this.keycloak.isUserInRole('Secretaire')" (click)="handleDeleteExamen(p)" class="btn btn-danger">
+              <i class="bi bi-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

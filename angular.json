@@ -13,6 +13,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "rxjs-compat",
+              "lodash"
+           ],
             "outputPath": "dist/front-pacs4",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -27,7 +31,13 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/bootstrap-icons/font/bootstrap-icons.css"
             ],
-            "scripts": []
+            "scripts": [
+
+              "./node_modules/bootstrap/dist/js/bootstrap.js",
+              "./node_modules/bootstrap-select/dist/js/bootstrap-select.min.js",
+              "./node_modules/keycloak-js/dist/keycloak.min.js"
+
+            ]
           },
           "configurations": {
             "production": {

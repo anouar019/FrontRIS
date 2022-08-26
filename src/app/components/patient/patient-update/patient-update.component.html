@@ -1,0 +1,51 @@
+<div class="container" style="margin-top: 70px;">
+  <div class="alert alert-danger" role="alert" *ngIf="error!=''">{{error}}</div>
+  <div class="alert alert-success" role="alert" *ngIf="message">{{message}}</div>
+  <div class="container">
+    <form>
+      <div class="form-group">
+        <h3>Patient ID: {{this.patient.id }}</h3>
+        <label for="lastName">LastName</label>
+        <input type="LastName" class="form-control" [(ngModel)]="patient.lastName" id="lastName" name="lastName"
+          aria-describedby="LastName" value={{this.patient.lastName}}>
+      </div>
+
+
+      <div class="form-group">
+        <label for="firstName">FirstName</label>
+        <input type="FirstName" class="form-control" [(ngModel)]="patient.firstName" id="firstName" name="firstName"
+          aria-describedby="FirstName" value={{this.patient.firstName}}>
+      </div>
+
+
+
+
+
+
+
+      <div class="form-group">
+        <label for="sex">Sex</label>
+        <select class="form-control" [(ngModel)]="patient.sex" id="sex" type="text" name="sex">
+          <option>MALE</option>
+          <option>FEMALE</option>
+        </select>
+      </div>
+
+
+     <!-- <label for="birth">Birth (yyyy-mm-dd)</label>
+      <input type="text" [(ngModel)]="patient.birth" name="birth" class="form-control" id="birth"
+        aria-describedby="birhtHelp" placeholder="Enter the birthdate of the patient !!! Format YYYY-MM-DD" required>
+     -->
+
+      <label for="date">Birth</label>
+      <input type="date" [(ngModel)]="patient.birth" name="date" class="form-control" id="date"
+        aria-describedby="datehelp" placeholder="Enter the birthdate of the patient !!!" required>
+
+
+      <button class="btn btn-primary" (click)="editPatient(this.patient)">Submit</button>
+
+
+    </form>
+
+  </div>
+</div>

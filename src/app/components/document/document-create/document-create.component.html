@@ -1,0 +1,61 @@
+<div class="alert alert-danger" role="alert" *ngIf="error!=''">{{error}}</div>
+<div class="container" style="margin-top: 70px;">
+  <div class="alert alert-success" role="alert" *ngIf="message">{{message}}</div>
+  <div class="container" style="margin-top: 70px;">
+
+    <div class="row">
+
+      <div class="col-sm-8 offset-sm-2">
+
+        <div>
+          <form>
+            <div class="form-group">
+
+
+              <label for="Patient">Patient</label>
+              <select class="form-select" aria-label="patient" [(ngModel)]="selectedPatient" name="selectedPatient"
+                id="selectedPatient">
+                <option *ngFor="let p of this.patientsList" [ngValue]="p">{{p | json}}</option>
+              </select>
+
+
+              <br>
+
+
+
+
+              <div class="form-group">
+                <label for="typeDocument">typeDocument</label>
+                <select class="form-control" [(ngModel)]="doc.typeDocument" id="typeDocument" type="text"
+                  name="typeDocument">
+                  <option>Identity</option>
+                  <option>Insurance</option>
+                  <option>Prescription</option>
+                  <option>Other</option>
+                </select>
+              </div>
+
+              <br>
+
+              
+
+
+                <label for="date">Date du document</label>
+                <input type="date" [(ngModel)]="doc.localedate" name="date" class="form-control" id="date"
+                  aria-describedby="datehelp" placeholder="Enter the birthdate of the patient !!!" required>
+
+              <br>
+
+              <input type="file" (change)="onFileSelected($event)" />
+              <br /><br />
+              base64 Output : <br />
+              {{base64Output}}
+
+            </div>
+
+            <button class="btn btn-primary" (click)="createDOC()">Submit</button>
+
+          </form>
+        </div>
+      </div>
+    </div>

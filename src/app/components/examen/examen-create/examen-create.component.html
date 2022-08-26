@@ -1,0 +1,70 @@
+<div class="alert alert-danger" role="alert" *ngIf="error!=''">{{error}}</div>
+<div class="container" style="margin-top: 70px;">
+  <div class="alert alert-success" role="alert" *ngIf="message">{{message}}</div>
+  <div class="container" style="margin-top: 70px;">
+
+    <div class="row">
+
+      <div class="col-sm-8 offset-sm-2">
+
+        <div>
+          <form>
+            <div class="form-group">
+
+
+              <label for="Patient">Patient</label>
+              <select class="form-select" aria-label="patient" [(ngModel)]="selectedPatient" name="selectedPatient"
+                id="selectedPatient">
+                <option *ngFor="let p of this.myPatientList" [ngValue]="p">{{p | json}}</option>
+              </select>
+
+
+              <br>
+
+
+
+              <label for="Protocole">Protocole</label>
+              <select class="form-select" aria-label="protocole" [(ngModel)]="selectedProtocole"
+                name="selectedProtocole" id="selectedProtocole" >
+                <option *ngFor="let p of this.myProtocoleList" [ngValue]="p">{{p | json}}</option>
+              </select>
+
+              <br>
+
+
+              <label for="manipulateur">Manipulateur</label>
+              <input type="text" [(ngModel)]="examen.manipulateur" name="manipulateur" class="form-control"
+                id="manipulateur" aria-describedby="manipulateurHelp" placeholder="Enter the name of the manipulateur">
+
+                <br>
+
+              <label for="medecinPrescripteur">medecinPrescripteur</label>
+              <input type="text" [(ngModel)]="examen.medecinPrescripteur" name="medecinPrescripteur"
+                class="form-control" id="medecinPrescripteur" aria-describedby="medecinPrescripteurHelp"
+                placeholder="Enter the name of the medecinPrescripteur">
+
+
+                <br>
+
+              <label for="medecinRadiologue">medecinRadiologue</label>
+              <input type="text" [(ngModel)]="examen.medecinRadiologue" name="medecinRadiologue" class="form-control"
+                id="medecinRadiologue" aria-describedby="medecinRadiologueHelp"
+                placeholder="Enter the name of the medecinRadiologue">
+
+
+                <br>
+
+              <label for="date">Date d'examen</label>
+              <input type="date" [(ngModel)]="examen.date" name="date" class="form-control" id="date"
+                aria-describedby="datehelp" >
+
+
+
+            </div>
+
+            <button class="btn btn-primary" (click)="createExamen()">Submit</button>
+
+          </form>
+        </div>
+      </div>
+    </div>
